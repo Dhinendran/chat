@@ -1,0 +1,23 @@
+
+<div class="wrapper">
+    <h1 class="page-header">My Profile Parameters</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        <tr *ngFor="let parameter of parameters" class="active">
+            <td>{{ parameter.name }}</td>
+            <td>{{ parameter.value }}</td>
+        </tr>
+
+    </table>
+</div>
+
+
+    <button class="button btn btn-lg btn-info" (click)="routeToChat()">
+        <i class='fas fa-comment' style='color:#73c564;'></i>
+        Lets Chat</button>
+</div>

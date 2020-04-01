@@ -1,0 +1,51 @@
+<div id="frame">
+	<div id="sidepanel">
+		<div id="profile">
+			<div class="wrap">
+				<p>{{name}}</p>
+			</div>
+		</div>
+
+		<div id="contacts">
+			<ul>
+				<li class="contact" *ngFor="let user of users" 
+                (click)="selectedUser(user)">
+					<div class="wrap">
+						<div class="meta">
+                            <p class="name">{{ user.name}}</p>
+                            <span class="contact-status online"></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content" *ngIf="selectedmail">
+		<div class="contact-profile">
+			<p>{{selectedmail}}</p>
+		</div>
+		<div class="messages" style="width: 100%;">
+            <div *ngFor="let message of this.messages" style="margin: 20px 0px;">
+				<span style="padding: 10px;" *ngIf="this.selectedmail == message.Frommail" class="reply">
+					{{message.message}}
+				</span>
+            </div>
+		</div>
+		<div class="message-input">
+			<div class="wrap">
+			<input type="text" placeholder="Write your message..." [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+            <button class="submit" (click)="sendMessage()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="!selectedmail" style="
+    text-align: center;
+    position: relative;
+    top: 50%;
+    font-weight: 900;
+    font-size: x-large;
+">
+		<span>Please select a user</span>
+
+	</div>
+</div>
